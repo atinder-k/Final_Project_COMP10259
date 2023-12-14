@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initia-scale=1.0">
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="css/contactstyle.css">
+        <title>Contact Us</title>
+        <script>
+                function Validate(){
+                const FN = document.forms["form"]["firstname"].value
+                if(FN.length < 5){
+                    alert("First name must contain at least 5 characters")
+                    return false
+                 }
+                const LN = document.forms["form"]["lastname"].value
+                if(LN.length < 5){
+                    alert("Last name must contain at least 5 characters")
+                    return false
+                }
+                const DATE = document.forms["form"]["date"].value
+                }
+                const PH = document.forms["form"]["phonenumber"].value
+                if(!(parseInt(PH.value) > 999999999 && parseInt(PH.value) < 10000000000)){
+                    alert("Phone must contain 10 digits")
+                    return false
+                const ME = document.forms["form"]["message"].value
+                if(ME.value.length<50){
+                    alert("Message  must contain at least 50 alphabets")
+                    return false
+                }}
+            
+        </script>
+    </head>
+
+
+
+    <body>
+        <div class="container">
+            <div class="form">
+                <div class="div1">
+                    <img src="Contact Us.png" alt="Contact Us image." style="width: 100%; padding:100px 20px 20px 20px;">
+                </div>
+                <div class="div2">
+                    <form name="form" onsubmit="Validate();sendEmail(); reset(); return false;" method="post"
+                    action="https://formspree.io/f/mdorqajz">
+                        <h2 class="title">Contact Us</h2>
+                        <div class="C-input focus">
+                            <input type="text" class ="input-C" id="firstname" name="firstname" required>
+                            <label for="firstname">First Name</label>
+                            <span>First Name</span>
+                            <br>
+                        </div>
+
+                        <div class="C-input focus">
+                            <input type="text" class="input-C" id="lastName" name="lastname" required>
+                            <label for="lastname">Last Name</label>
+                            <span>Last Name</span>
+                            <br>
+                        </div>
+
+                        <div class="C-input focus">
+                           <input type="email" class="input-C" id="email" name="email" required>
+                            <label for="email">Email</label>
+                            <span>Email</span>
+                            <br>
+                        </div>
+
+                        <div class="C-input focus">
+                           <input type="date" class="input-C" id="date" name="date" required>
+                           <label for="date">Date</label>
+                           <span>Date</span>
+                           <br>
+                        </div>
+
+                        <div class="C-input focus">                           
+                            <input type="tel" class="input-C" id="phonenumber" name="phonenumber" required>
+                            <label for="phonenumber">Phone Number</label>
+                            <span>Phone Number</span>
+                            <br>
+                        </div>
+
+                        <div class="C-input textarea focus">                            
+                            <textarea name="Message"  class="input-C" id="message" name="message" required></textarea>
+                            <label for="message">Message</label>
+                            <span>Message</span>
+                            <br>
+                        </div>
+                        <input type="submit" value="Send" class="bton">
+                          
+                    </form>
+
+                    <span><circle class="one"></circle></span>
+                    <span><circle class="one1"></circle></span>
+                    <span><circle class="one2"></circle></span>
+                    <span><circle class="two"></circle></span>
+                    <span><circle class="three"></circle></span>
+                    <span><circle class="four"></circle></span>
+                </div>
+            </div>
+        </div>
+        <script>
+            const inputs=document.querySelectorAll(".input");
+
+            function focusFunc(){
+                let parent=this.parentNode;
+                parent.classList.add("focus");
+            }
+            inputs.forEach((input) => {
+               input.addEventListener("focus",focusFunc); 
+            })
+        </script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script>
+            function sendEmail(){
+                Email.send({
+                Host : "smtp.elasticemail.com",
+                Username : "vaidateform123@gmail.com",
+                Password : "401C8421D3997D55BEB40A935CB31C5FFA65",
+                To : document.getElementsById("email").value,
+                From : "vaidateform123@gmail.com",
+                Subject : "Contact Us form data.",
+                Body : "Enquiry about the Contact Us form with client data."
+             }).then(
+              message => alert(message)
+              );
+             } 
+        </script>
+    
+    </body>
+
+</html>
